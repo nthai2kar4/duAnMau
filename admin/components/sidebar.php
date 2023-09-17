@@ -13,7 +13,7 @@
             <hr class="sidebar-divider">
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="./index.php?pages=products&action=list_product">
+                <a class="nav-link collapsed" href="./index.php?pages=product&action=list">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Quản lí sản phẩm</span>
                 </a>    

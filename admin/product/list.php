@@ -8,39 +8,58 @@
 </head>
 
 <body>
-    <div class="container-fluid mt-5">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Sản Phẩm</h4>
-                <a href="./index.php?pages=products&action=add_product" class="btn btn-primary float-right">Thêm</a>
-            </div>
-            <div class="card-body">       
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr class="text-center">
-                                <th>STT</th>
-                                <th>Tên</th>
-                                <th>Ảnh</th>
-                                <th>Giá</th>
-                                <th>Hành động</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tiger Nixon</td>
-                                <td>System Architect</td>
-                                <td>Edinburgh</td>
-                                <td>Huy ngu</td>
-                                <td>
-                                    <div class="d-flex justify-content-center"><a href="/" class="btn btn-primary"
-                                            style="margin-right: 10px;">Sửa</a><button
-                                            class="btn btn-danger">Xóa</button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+    <div class="container-fluid mt-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Sản Phẩm <a href="./index.php?pages=product&action=add"
+                            class="btn btn-primary float-end">Thêm</a></h4>
+
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr class="text-center">
+                                    <th>STT</th>
+                                    <th>Tên</th>
+                                    <th>Slug</th>
+                                    <th>Danh muc</th>
+                                    <th>Ảnh</th>
+                                    <th>Giá</th>
+                                    <th>Giá khuyến mãi</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach(getAllProduct() as $item):?>
+                                <tr>
+                                    <td><?= $item['id']?></td>
+                                    <td><?= $item['name']?></td>
+                                    <td><?= $item['slug']?></td>
+                                    <td><?= $item['category']?></td>
+                                    <td><img src="<?= $item['image']?>" alt="" width="50px" height="50px"></td>
+                                    <td><?= $item['price']?></td>
+                                    <td><?= $item['sale_price']?></td>
+                                    <td>
+                                        <div class="d-flex justify-content-center">
+                                            <a href="./index.php?pages=product&action=edit&id=<?= $item['id']?>&category_id=<?= $item['category_id']?>"
+                                                class="btn btn-primary" style="margin-right: 10px;">Sửa</a>
+                                            <form action="" method="post">
+                                                <input type="hidden" value="<?= $item['id']?>" name="idProduct">
+                                                <button class="btn btn-danger dlbtn" name="deleteProduct"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm?')"
+                                                    type="submit">Xóa</button>
+                                            </form>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php endforeach?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

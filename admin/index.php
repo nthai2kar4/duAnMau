@@ -1,6 +1,9 @@
+<?php
+    require_once "../config/db.php";
+    include "code/function.php";
+?>
 <!doctype html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,19 +21,19 @@
         <?php
         if (isset($_GET['pages'])) {
             switch ($_GET['pages']) {
-                case 'products':
+                case 'product':
                     switch ($_GET['action']) {
-                        case 'list_product':
-                            include 'product/list-product.php';
+                        case 'list':
+                            include 'product/list.php';
                             break;
-                        case 'add_product':
-                            include 'product/add-product.php';
+                        case 'add':
+                            include 'product/add.php';
                             break;
-                        case 'edit_product':
-                            include 'product/edit-product.php';
+                        case 'edit':
+                            include 'product/edit.php';
                             break;
                         default:
-                            include 'product/list-product.php';
+                            include 'product/list.php';
                             break;
                     }
                     break;
@@ -41,7 +44,7 @@
 
     <script>
         $(".nav-item").on("click", function() {
-            $(".nav-item active").removeClass('active');
+            $(".nav-item").removeClass('active');
             $(this).addClass('active');
         })
     </script>
