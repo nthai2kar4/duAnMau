@@ -43,7 +43,7 @@
     function editProduct($id,$name, $slug, $category, $image, $content, $price, $sale_price){
         global $conn;
         $query = "UPDATE product SET name = '$name', slug = '$slug', category_id = '$category', image = '$image', content = '$content', price = '$price', sale_price = '$sale_price' WHERE id = '$id'";
-        mysqli_query($conn, $query);
+        $sql = mysqli_query($conn, $query);
         header("location: index.php?pages=product&action=list");
     }
     //xóa sản phẩm
@@ -52,5 +52,37 @@
         $query = "DELETE FROM product WHERE id = '$id'";
         mysqli_query($conn, $query);
         header("location: index.php?pages=product&action=list");
+    }
+    //Thêm user
+    function createUser($name, $email, $password){
+        global $conn;
+        $query = "INSERT INTO user (name, email, password) VALUES ('$name','$email','$password')";
+        mysqli_query($conn, $query);
+        header("location: index.php?pages=user&action=list");
+    }
+    //Sửa user
+    function editUser($id, $name, $email, $password){
+        global $conn;
+        $query = "UPDATE user SET name = '$name', email = '$email', password = '$password' WHERE id = '$id'";
+        mysqli_query($conn, $query);
+        header("location: index.php?pages=user&action=list");
+    }
+    //Lấy tất cả user
+    function getAllUser(){
+        global $conn;
+        $query = "SELECT * FROM user";
+        $sql = mysqli_query($conn, $query);
+        if($sql){
+            return $sql->fetch_all(MYSQLI_ASSOC);
+        }
+    }
+    //Lấy 1 user
+    function getOneUser($id){
+        global $conn;
+        $query = "SELECT * FROM user where id = $id";
+        $sql = mysqli_query($conn, $query);
+        if($sql){
+           return $sql -> fetch_all(MYSQLI_ASSOC);
+        }
     }
 ?>

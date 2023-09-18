@@ -34,14 +34,14 @@
                             </thead>
                             <tbody>
                                 <?php foreach(getAllProduct() as $item):?>
-                                <tr>
+                                <tr class="text-center">
                                     <td><?= $item['id']?></td>
                                     <td><?= $item['name']?></td>
                                     <td><?= $item['slug']?></td>
                                     <td><?= $item['category']?></td>
-                                    <td><img src="<?= $item['image']?>" alt="" width="50px" height="50px"></td>
-                                    <td><?= $item['price']?></td>
-                                    <td><?= $item['sale_price']?></td>
+                                    <td><img src="<?= $item['image']?>" alt="" width="40px" height="50px"></td>
+                                    <td><?= number_format($item['price'])?></td>
+                                    <td><?= number_format($item['sale_price'])?></td>
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <a href="./index.php?pages=product&action=edit&id=<?= $item['id']?>&category_id=<?= $item['category_id']?>"

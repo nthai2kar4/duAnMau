@@ -1,9 +1,10 @@
 <?php
-    require_once "../config/db.php";
-    include "code/function.php";
+require_once "../config/db.php";
+include "code/function.php";
 ?>
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,6 +38,21 @@
                             break;
                     }
                     break;
+                case 'user':
+                    switch ($_GET['action']) {
+                        case 'list':
+                            include 'user/list.php';
+                            break;
+                        case 'add':
+                            include 'user/add.php';
+                            break;
+                        case 'edit':
+                            include 'user/edit.php';
+                            break;
+                        default:
+                            include 'user/list.php';
+                            break;
+                    }
             }
         }
         ?>
