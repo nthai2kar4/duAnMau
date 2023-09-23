@@ -8,10 +8,13 @@
                 </h4>
             </div>
             <div class="card-body">
-                <form action="" method="post" enctype="multipart/form-data">
+                <form action="" method="post" enctype="multipart/form-data" class="needs-validation was-validated">
                     <div class="mb-3">
                         <label for="">Tên sản phẩm: </label>
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" required>
+                        <div class="invalid-feedback">
+                            Tên không được bỏ trống
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="">Danh mục: </label>
@@ -25,19 +28,19 @@
                     </div>
                     <div class="mb-3">
                         <label for="">Hình Ảnh: </label>
-                        <input type="file" class="form-control" name="image">
+                        <input type="file" class="form-control" name="image" required>
                     </div>
                     <div class="mb-3">
                         <label for="">Giá: </label>
-                        <input type="text" class="form-control" name="price">
+                        <input type="text" class="form-control" name="price" required>
                     </div>
                     <div class="mb-3">
                         <label for="">Giá khuyến mãi: </label>
-                        <input type="text" class="form-control" name="sale_price">
+                        <input type="text" class="form-control" name="sale_price" required>
                     </div>
                     <div class="mb-3">
                         <label for="">Mô Tả: </label><br>
-                        <textarea class="form-control" name="content" id="" rows="7"></textarea>
+                        <textarea class="form-control" name="content" id="" rows="7" required></textarea>
                     </div>
                     <div class="mb-3">
                         <button type="submit" name="addProduct" class="btn btn-primary">Thêm</button>

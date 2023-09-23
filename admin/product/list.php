@@ -25,10 +25,11 @@
                                     <th>STT</th>
                                     <th>Tên</th>
                                     <th>Slug</th>
-                                    <th>Danh muc</th>
+                                    <th>Danh mục</th>
                                     <th>Ảnh</th>
                                     <th>Giá</th>
                                     <th>Giá khuyến mãi</th>
+                                    <th>Thời gian</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>
@@ -42,6 +43,7 @@
                                     <td><img src="<?= $item['image']?>" alt="" width="40px" height="50px"></td>
                                     <td><?= number_format($item['price'])?></td>
                                     <td><?= number_format($item['sale_price'])?></td>
+                                    <td><?= date('d-m-Y', strtotime($item['created_at']))?></td>
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <a href="./index.php?pages=product&action=edit&id=<?= $item['id']?>&category_id=<?= $item['category_id']?>"

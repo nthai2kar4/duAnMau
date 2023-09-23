@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule ^$ index.php?pages=product&action=list [L]
+RewriteRule ^$ index.php?pages=product&action=list [L]  
