@@ -6,7 +6,9 @@
     <?php
     include 'components/head.php';
     require_once '../admin/code/function.php';
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     if (isset($_SESSION['login_user'])) {
         $data = login();
     }
