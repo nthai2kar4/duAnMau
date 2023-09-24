@@ -121,3 +121,31 @@
            return $sql -> fetch_all(MYSQLI_ASSOC);
         }
     }
+    //Lấy 1 user để đăng nhập
+    function getUser($email, $password){
+        global $conn;
+        $query = "SELECT * FROM user where email = '$email' AND password = '$password'";
+        $sql = mysqli_query($conn, $query);
+        if($sql){
+           session_start();
+           $_SESSION['login_user'] = $email; 
+           header('Location: ?index.php');
+        }
+        else{
+            echo "<div class='message'>
+                  <p>Email hoặc mật khẩu không đúng</p>
+                   </div> <br>";
+               echo "<a href='login-user.php'><button class='btn'>Quay lại</button>";
+          }
+    }
+    //Đăng nhập
+    function login(){
+        global $conn;
+        $query = "SELECT name FROM user where email = '$_SESSION[login_user]'";
+        $sql = mysqli_query($conn, $query );
+        if($sql){
+            return $sql -> fetch_all(MYSQLI_ASSOC);
+            
+         }
+    }
+

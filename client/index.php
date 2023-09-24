@@ -1,9 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
 <head>
     <?php
-    include 'components/head.php'
+    include 'components/head.php';
+    require_once '../admin/code/function.php';
+    session_start();
+    if (isset($_SESSION['login_user'])) {
+        $data = login();
+    }
     ?>
 </head>
 
@@ -30,23 +36,19 @@
                         break;
                 }
                 break;
-            case 'home':
-                include 'components/main.php';
-                break;
-            default:
-                include 'components/main.php';
+            case 'login':
+                include 'page/login.php';
                 break;
         }
-    }
-    else{
+    } else {
         include 'components/main.php';
     }
     include 'components/footer.php';
     include 'components/script.php';
     ?>
     <script>
-        $(document).ready(function(){
-            $(".nav-item").click(function(){
+        $(document).ready(function() {
+            $(".nav-item").click(function() {
                 $(".nav-item").removeClass("active");
                 $(this).addClass("active");
             });

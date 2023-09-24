@@ -105,3 +105,27 @@ if(isset($_POST['editUser'])){
         echo "<div class='alert alert-danger'>Email không đúng định dạng</div>";
     }
 }
+//dang nhap user
+if(isset($_POST['logIn'])){
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if(empty($email) && empty($password)){
+        echo "<div class='alert alert-danger'>Email và mật khẩu không được để trống</div>";
+    }
+    else if(empty($email)){
+        echo "<div class='alert alert-danger'>Email không được để trống</div>";         
+    }
+    else if(empty($password)){
+        echo "<div class='alert alert-danger'>Mật khẩu không được để trống</div>";
+    }
+    else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<div class='alert alert-danger'>Email không đúng định dạng</div>";
+      }
+      else{
+        getUser($email, $password);
+      }
+}
+if(isset($_POST['logout'])){
+    session_start();
+    unset($_SESSION['login_user']);
+}
