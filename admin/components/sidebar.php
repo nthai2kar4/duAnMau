@@ -25,7 +25,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="?pages=list_products">
+                <a class="nav-link collapsed" href="./index.php?pages=order&action=list">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Quản lí đơn hàng</span>
                 </a>

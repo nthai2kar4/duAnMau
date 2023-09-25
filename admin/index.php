@@ -53,6 +53,18 @@ include "code/function.php";
                             include 'user/list.php';
                             break;
                     }
+                case 'order':
+                    switch ($_GET['action']) {
+                        case 'list':
+                            include 'order/list.php';
+                            break;
+                        case 'update':
+                            include 'order/update.php';
+                            break;
+                        default:
+                            include 'order/list.php';
+                            break;
+                    }
             }
         }
         ?>
