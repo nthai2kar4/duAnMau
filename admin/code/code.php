@@ -125,7 +125,12 @@ if(isset($_POST['logIn'])){
         getUser($email, $password);
       }
 }
+//dang xuat
 if(isset($_POST['logout'])){
     session_start();
     unset($_SESSION['login_user']);
+}
+//them gio hang
+if(isset($_POST['addCart'])){
+    
 }

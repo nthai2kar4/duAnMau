@@ -41,6 +41,9 @@
             case 'login':
                 include 'page/login.php';
                 break;
+            case 'cart':
+                include 'page/cart.php';
+                break;
         }
     } else {
         include 'components/main.php';

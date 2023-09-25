@@ -148,4 +148,7 @@
             
          }
     }
-
+    //Thêm giỏ hàng
+    function addToCart($id){
+        global $conn;
+    }
