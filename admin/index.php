@@ -53,6 +53,7 @@ include "code/function.php";
                             include 'user/list.php';
                             break;
                     }
+                    break;
                 case 'order':
                     switch ($_GET['action']) {
                         case 'list':
@@ -65,6 +66,7 @@ include "code/function.php";
                             include 'order/list.php';
                             break;
                     }
+                    break;
             }
         }
         ?>

@@ -26,7 +26,7 @@
                                     <td></td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a href="./index.php?pages=user&action=edit&id="
+                                            <a href="./index.php?pages=order&action=edit&id="
                                                 class="btn btn-primary" style="margin-right: 10px;">Cập nhật</a>
                                         </div>
                                     </td>

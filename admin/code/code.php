@@ -107,6 +107,7 @@ if (isset($_POST['editUser'])) {
 if (isset($_POST['logIn'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $erro = '';
     $erroEmail = '';
     $erroPass = '';
     if (empty($email)) {
@@ -118,6 +119,12 @@ if (isset($_POST['logIn'])) {
         $erroEmail = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Email không đúng định dạng</span>";
     } else {
         getUser($email, $password);
+        if(getUser($email, $password) === ''){
+            $erro = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Email hoặc mật khẩu chưa đúng</span>";
+        }
+        else{
+            header('Location: ?index.php');
+        }
     }
 }
 //dang ki user

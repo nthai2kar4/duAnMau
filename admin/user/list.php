@@ -33,7 +33,6 @@
                                                     onclick="return confirm('Bạn có chắc chắn muốn xóa khách hàng?')"
                                                     type="submit">Xóa</button>
                                             </form>
-
                                         </div>
                                     </td>
                                 </tr>

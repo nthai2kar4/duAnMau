@@ -136,17 +136,22 @@ function getOneUser($id)
 function getUser($email, $password)
 {
     global $conn;
-    $query = "SELECT * FROM user where email = '$email' AND password = '$password'";
+    $query = "SELECT * FROM user where email = '$email'"; 
     $sql = mysqli_query($conn, $query);
-    if ($sql) {
-        session_start();
-        $_SESSION['login_user'] = $email;
-        header('Location: ?index.php');
-    } else {
-        echo "<div class='message'>
-                  <p>Email hoặc mật khẩu không đúng</p>
-                   </div> <br>";
-        echo "<a href='login-user.php'><button class='btn'>Quay lại</button>";
+    if (mysqli_num_rows($sql)==1) {
+        $row = mysqli_fetch_array($sql); 
+        $hash = $row['password'];
+        if(password_verify($password, $hash)) {
+            session_start();
+             $_SESSION['login_user'] = $email;
+            header('Location: ?index.php');
+        }
+        else {
+            return '';
+        }
+    } 
+    else{
+        return '';
     }
 }
 //Đăng nhập

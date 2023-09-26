@@ -55,6 +55,9 @@
 							<button type="submit" name="logIn" class="primary-btn">Log In</button>
 							<a href="#">Forgot Password?</a>
 						</div>
+						<? if (isset($_POST['logIn'])) {
+								echo $erro;
+							}?>
 					</form>
 				</div>
 			</div>
