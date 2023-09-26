@@ -25,11 +25,11 @@
                                     <th>STT</th>
                                     <th>Tên</th>
                                     <th>Slug</th>
-                                    <th>Danh mục</th>
+                                    <th style="width: 100px;">Danh mục</th>
                                     <th>Ảnh</th>
                                     <th>Giá</th>
-                                    <th>Giá khuyến mãi</th>
-                                    <th>Thời gian</th>
+                                    <th style="width:140px;">Giá khuyến mãi</th>
+                                    <th style="width: 120px;">Thời gian</th>
                                     <th>Hành động</th>
                                 </tr>
                             </thead>

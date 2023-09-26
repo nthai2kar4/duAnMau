@@ -26,3 +26,4 @@
 	<link rel="stylesheet" href="client/asset/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="client/asset/css/magnific-popup.css">
 	<link rel="stylesheet" href="client/asset/css/main.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">

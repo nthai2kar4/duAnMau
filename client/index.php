@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -40,6 +39,9 @@
                 break;
             case 'login':
                 include 'page/login.php';
+                break;
+            case 'register';
+                include 'page/register.php';
                 break;
             case 'cart':
                 include 'page/cart.php';
