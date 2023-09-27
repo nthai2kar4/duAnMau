@@ -198,9 +198,6 @@
                             </div>
                             <div class="prd-bottom">
 								<input type="hidden" name="id" value="<?= $data['id']?>">
-								<input type="hidden" name="name" value="<?= $data['name']?>">
-								<input type="hidden" name="sale_price" value="<?= $data['sale_price']?>">
-								<input type="hidden" name="image" value="<?= $data['image']?>">
                                 <button class="social-info" style="border:none; background:none;width:40px;" type="submit" name="addCart">
                                     <span class="ti-bag"></span>
                                 </button>

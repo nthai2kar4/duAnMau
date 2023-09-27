@@ -169,4 +169,6 @@ if (isset($_POST['logout'])) {
 }
 //them gio hang
 if (isset($_POST['addCart'])) {
+    $id = $_POST['id'];
+    getOneProduct($id);
 }

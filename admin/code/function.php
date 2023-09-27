@@ -176,3 +176,10 @@ function addToCart($id)
 {
     global $conn;
 }
+
+// function setCookies()
+// {
+//     // lưu và set thời gian lưu thông tin trên thanh input
+//     setcookie('email', $_POST['email'], time() + 15, '/');
+//     setcookie('password', $_POST['password'], time() + 15, '/');
+// }
