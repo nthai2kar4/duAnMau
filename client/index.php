@@ -44,8 +44,14 @@
                 include 'page/register.php';
                 break;
             case 'cart':
-                include 'page/cart.php';
-                break;
+                switch ($_GET['action']) {
+                    case 'list':
+                        include 'page/cart.php';
+                        break;
+                    default:
+                        include 'page/cart.php';
+                        break;
+                }
         }
     } else {
         include 'components/main.php';

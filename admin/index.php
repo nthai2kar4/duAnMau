@@ -15,9 +15,13 @@ include "code/function.php";
 </head>
 
 <body>
+    <?php
+    include 'components/navbar.php';
+    ?>
     <div id="wrapper">
         <?php
         include 'components/sidebar.php';
+        
         ?>
         <?php
         if (isset($_GET['pages'])) {
@@ -69,6 +73,8 @@ include "code/function.php";
                     break;
             }
         }
+
+
         ?>
     </div>
 
