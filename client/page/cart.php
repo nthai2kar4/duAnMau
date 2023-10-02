@@ -29,7 +29,6 @@
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
-                    <form action="" method="post">
                         <tbody>
                             <?php if (isset($_SESSION['cart'])) { ?>
                                 <?php
@@ -67,7 +66,9 @@
                                         <td>
                                             <h5><?= number_format($total_product) ?></h5>
                                         </td>
-                                        <td><input type="hidden" value="<?= $item['id'] ?>" name="id"><button onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi giỏ hàng?')" class="btn btn-danger" type="submit" name="deleteCart">Xoá</button></td>
+                                        <form action="?deleteCart=<?= $item['id']?>" method="post">
+                                        <td><button onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi giỏ hàng?')" class="btn btn-danger" type="submit" name="deleteCart">Xoá</button></td>
+                                        </form>
                                     </tr>
                                 <?php endforeach ?>
                             <?php } else {
@@ -125,7 +126,7 @@
                                 </td>
                             </tr>
                         </tbody>
-                    </form>
+                   
                 </table>
             </div>
         </div>

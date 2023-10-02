@@ -1,6 +1,5 @@
 	<script src="client/asset/js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-	 crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 	<script src="client/asset/js/vendor/bootstrap.min.js"></script>
 	<script src="client/asset/js/jquery.ajaxchimp.min.js"></script>
 	<script src="client/asset/js/jquery.nice-select.min.js"></script>
@@ -15,3 +14,12 @@
 	<script src="client/asset/js/main.js"></script>
 	<script src="client/asset/js/jquery.magnific-popup.min.js"></script>
 	<!--gmaps Js-->
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<?php
+		if (isset($_SESSION['success']) && $_SESSION['success'] != '') {
+	?>
+	<script>swal("<?= $_SESSION['success']?>","", "success");</script>
+	<?php
+	unset($_SESSION['success']);
+	}
+	?>

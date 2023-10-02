@@ -119,10 +119,9 @@ if (isset($_POST['logIn'])) {
         $erroEmail = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Email không đúng định dạng</span>";
     } else {
         getUser($email, $password);
-        if(getUser($email, $password) === ''){
+        if (getUser($email, $password) === '') {
             $erro = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Email hoặc mật khẩu chưa đúng</span>";
-        }
-        else{
+        } else {
             header('Location: ?index.php');
         }
     }
@@ -148,16 +147,13 @@ if (isset($_POST['register'])) {
     if (empty($password)) {
         $erroPass = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Mật khẩu không được để trống</span>";
     }
-    if(empty($confirmpassword)){
+    if (empty($confirmpassword)) {
         $erroConfirm = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Xác nhận lại mật khẩu</span>";
-    }
-    else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $erroEmail = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Email không đúng định dạng</span>";
-    }
-    else if($confirmpassword != $password){
+    } else if ($confirmpassword != $password) {
         $erroConfirm = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Mật khẩu nhập lại không đúng</span>";
-    }
-    else {
+    } else {
         register($name, $email, $hash);
         $acp = "<span class='text-success'>Đăng kí thành công</span>";
     }
@@ -171,109 +167,106 @@ if (isset($_POST['logout'])) {
 if (isset($_POST['addCart'])) {
     $id = $_POST['id'];
     $qty = 1;
-    foreach(getOneProduct($id) as $cart_item);
+    foreach (getOneProduct($id) as $cart_item);
     $data = [
         'name' => $cart_item['name'],
         'id' => $id,
         'sale_price' => $cart_item['sale_price'],
         'image' => $cart_item['image'],
-        'qty' => $qty 
+        'qty' => $qty
     ];
-   session_start();
-   $found = false;
-   if(isset($_SESSION['cart'])){
-   
-    foreach($_SESSION['cart'] as $cart_item){
-        if($cart_item['id']==$id){
-            $_SESSION['cart']["$id"]['qty']++;
-            $found = true;
-            break;
+    session_start();
+    $found = false;
+    if (isset($_SESSION['cart'])) {
+
+        foreach ($_SESSION['cart'] as $cart_item) {
+            if ($cart_item['id'] == $id) {
+                $_SESSION['cart']["$id"]['qty']++;
+                $found = true;
+                break;
+            }
         }
     }
-   }
-   if(!$found){
-    $_SESSION['cart'][$id] = $data;
-   }                
-  header('Location: ?pages=cart&action=list');
+    if (!$found) {
+        $_SESSION['cart'][$id] = $data;
+    }
+    $_SESSION['success'] = 'Sản phẩm đã được thêm';
 }
 //xoa 1 san pham ra khoi gio hang
-if(isset($_POST['deleteCart'])){
+if (isset($_POST['deleteCart'])) {
     session_start();
-    $id = $_POST['id'];
-    if(isset($_SESSION['cart'])){
-        foreach($_SESSION['cart'] as $cart_item){
-          if($id == $cart_item['id']){
-            unset($_SESSION['cart']["$id"]);
-            header('Location: ?pages=cart&action=list');
-            break;
-          }
+    $id = $_GET['deleteCart'];
+    if (isset($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $cart_item) {
+            if ($id == $cart_item['id']) {
+                unset($_SESSION['cart']["$id"]);
+                header('Location: ?pages=cart&action=list');
+                break;
+            }
         }
-       }
+    }
 }
 //tang 1 san pham trong gio hang
-if(isset($_GET['upQty'])){
+if (isset($_GET['upQty'])) {
     session_start();
-    $id = $_GET['upQty'];   
-    if(isset($_SESSION['cart'])){
-        foreach($_SESSION['cart'] as $cart_item){
-          if($cart_item['id'] != $id ){
-            $data = [
-                'name' => $cart_item['name'],
-                'id' => $cart_item['id'],
-                'sale_price' => $cart_item['sale_price'],
-                'image' => $cart_item['image'],
-                'qty' => $cart_item['qty'] 
-            ];
-            $_SESSION['cart'] = $data;
-          }
-          else{
-            $upQty = $cart_item['qty'] + 1;
-            $data = array([
-                'name' => $cart_item['name'],
-                'id' => $id,
-                'sale_price' => $cart_item['sale_price'],
-                'image' => $cart_item['image'],
-                'qty' => $upQty 
-            ]);
-            $_SESSION['cart'] = $data;
-          }
+    $id = $_GET['upQty'];
+    if (isset($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $cart_item) {
+            if ($cart_item['id'] != $id) {
+                $data = [
+                    'name' => $cart_item['name'],
+                    'id' => $cart_item['id'],
+                    'sale_price' => $cart_item['sale_price'],
+                    'image' => $cart_item['image'],
+                    'qty' => $cart_item['qty']
+                ];
+                $_SESSION['cart'] = $data;
+            } else {
+                $upQty = $cart_item['qty'] + 1;
+                $data = array([
+                    'name' => $cart_item['name'],
+                    'id' => $id,
+                    'sale_price' => $cart_item['sale_price'],
+                    'image' => $cart_item['image'],
+                    'qty' => $upQty
+                ]);
+                $_SESSION['cart'] = $data;
+            }
         }
-       }
-       header("location: ?pages=cart&action=list");
+    }
+    header("location: ?pages=cart&action=list");
 }
 //giam 1 san pham trong gio hang
-if(isset($_GET['downQty'])){
+if (isset($_GET['downQty'])) {
     session_start();
-    $id = $_GET['downQty']; 
-    if(isset($_SESSION['cart'])){
-        foreach($_SESSION['cart'] as $cart_item){
-          if($cart_item['id'] != $id ){
-            $data = [
-                'name' => $cart_item['name'],
-                'id' => $cart_item['id'],
-                'sale_price' => $cart_item['sale_price'],
-                'image' => $cart_item['image'],
-                'qty' => $cart_item['qty'] 
-            ];
-            $_SESSION['cart'] = $data;
-          }
-          else{
-            $upQty = $cart_item['qty'] - 1;
-            if($upQty ==0){
-                unset($_SESSION['cart']);
+    $id = $_GET['downQty'];
+    if (isset($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $cart_item) {
+            if ($cart_item['id'] != $id) {
+                $data = [
+                    'name' => $cart_item['name'],
+                    'id' => $cart_item['id'],
+                    'sale_price' => $cart_item['sale_price'],
+                    'image' => $cart_item['image'],
+                    'qty' => $cart_item['qty']
+                ];
+                $_SESSION['cart'] = $data;
+            } else {
+                $upQty = $cart_item['qty'] - 1;
+                if ($upQty == 0) {
+                    unset($_SESSION['cart']);
+                } else {
+                    $data = array([
+                        'name' => $cart_item['name'],
+                        'id' => $id,
+                        'sale_price' => $cart_item['sale_price'],
+                        'image' => $cart_item['image'],
+                        'qty' => $upQty
+                    ]);
+                    $_SESSION['cart'] = $data;
+                }
             }
-            else{
-            $data = array([
-                'name' => $cart_item['name'],
-                'id' => $id,
-                'sale_price' => $cart_item['sale_price'],
-                'image' => $cart_item['image'],
-                'qty' => $upQty 
-            ]);
-            $_SESSION['cart'] = $data;
-          }
         }
-        }
-       }
-       header("location: ?pages=cart&action=list");
+    }
+    header("location: ?pages=cart&action=list");
 }
