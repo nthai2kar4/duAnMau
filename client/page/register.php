@@ -64,8 +64,12 @@
                         <div class="col-md-12 form-group">
                             <button type="submit" name="register" class="primary-btn">Register</button>
                         </div>
-                        <? if (isset($_POST['register'])) {
-								echo $acp;
+                        <? 
+                        if (session_status() == PHP_SESSION_NONE) {
+                            session_start();
+                        }
+                        if (isset($_SESSION['success'])) {
+								echo $_SESSION['success'];
 							}?>
                     </form>
                 </div>

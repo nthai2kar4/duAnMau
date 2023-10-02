@@ -128,6 +128,7 @@ if (isset($_POST['logIn'])) {
 }
 //dang ki user
 if (isset($_POST['register'])) {
+    session_start();
     $name = $_POST['fullname'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -155,7 +156,7 @@ if (isset($_POST['register'])) {
         $erroConfirm = "<span class='text-danger'><i class='fa-solid fa-circle-exclamation' style='color: #ff0000;'></i> Mật khẩu nhập lại không đúng</span>";
     } else {
         register($name, $email, $hash);
-        $acp = "<span class='text-success'>Đăng kí thành công</span>";
+        $_SESSION['success'] = "Đăng kí thành công";
     }
 }
 //dang xuat
