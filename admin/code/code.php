@@ -165,45 +165,35 @@ if (isset($_POST['logout'])) {
 }
 //them gio hang
 if (isset($_POST['addCart'])) {
-    $id = $_POST['id'];
-    $qty = 1;
-    foreach (getOneProduct($id) as $cart_item);
-    $data = [
-        'name' => $cart_item['name'],
-        'id' => $id,
-        'sale_price' => $cart_item['sale_price'],
-        'image' => $cart_item['image'],
-        'qty' => $qty
-    ];
     session_start();
-    $found = false;
-    if (isset($_SESSION['cart'])) {
+    if (isset($_SESSION['login_user']) && $_SESSION['login_user'] != '') {
+        $id = $_POST['id'];
+        $qty = 1;
+        foreach (getOneProduct($id) as $cart_item);
+        $data = [
+            'name' => $cart_item['name'],
+            'id' => $id,
+            'sale_price' => $cart_item['sale_price'],
+            'image' => $cart_item['image'],
+            'qty' => $qty
+        ];
+        $found = false;
+        if (isset($_SESSION['cart'])) {
 
-        foreach ($_SESSION['cart'] as $cart_item) {
-            if ($cart_item['id'] == $id) {
-                $_SESSION['cart']["$id"]['qty']++;
-                $found = true;
-                break;
+            foreach ($_SESSION['cart'] as $cart_item) {
+                if ($cart_item['id'] == $id) {
+                    $_SESSION['cart']["$id"]['qty']++;
+                    $found = true;
+                    break;
+                }
             }
         }
-    }
-    if (!$found) {
-        $_SESSION['cart'][$id] = $data;
-    }
-    $_SESSION['success'] = 'Sản phẩm đã được thêm';
-}
-//xoa 1 san pham ra khoi gio hang
-if (isset($_POST['deleteCart'])) {
-    session_start();
-    $id = $_GET['deleteCart'];
-    if (isset($_SESSION['cart'])) {
-        foreach ($_SESSION['cart'] as $cart_item) {
-            if ($id == $cart_item['id']) {
-                unset($_SESSION['cart']["$id"]);
-                header('Location: ?pages=cart&action=list');
-                break;
-            }
+        if (!$found) {
+            $_SESSION['cart'][$id] = $data;
         }
+        $_SESSION['success'] = 'Sản phẩm đã được thêm';
+    } else {
+        header('Location: ?pages=login');
     }
 }
 //tang 1 san pham trong gio hang
@@ -213,7 +203,7 @@ if (isset($_GET['upQty'])) {
     if (isset($_SESSION['cart'])) {
         foreach ($_SESSION['cart'] as $cart_item) {
             if ($cart_item['id'] != $id) {
-                $data = [
+                $data[] = [
                     'name' => $cart_item['name'],
                     'id' => $cart_item['id'],
                     'sale_price' => $cart_item['sale_price'],
@@ -223,13 +213,13 @@ if (isset($_GET['upQty'])) {
                 $_SESSION['cart'] = $data;
             } else {
                 $upQty = $cart_item['qty'] + 1;
-                $data = array([
+                $data[] = [
                     'name' => $cart_item['name'],
                     'id' => $id,
                     'sale_price' => $cart_item['sale_price'],
                     'image' => $cart_item['image'],
                     'qty' => $upQty
-                ]);
+                ];
                 $_SESSION['cart'] = $data;
             }
         }
@@ -243,7 +233,7 @@ if (isset($_GET['downQty'])) {
     if (isset($_SESSION['cart'])) {
         foreach ($_SESSION['cart'] as $cart_item) {
             if ($cart_item['id'] != $id) {
-                $data = [
+                $data[] = [
                     'name' => $cart_item['name'],
                     'id' => $cart_item['id'],
                     'sale_price' => $cart_item['sale_price'],
@@ -256,17 +246,37 @@ if (isset($_GET['downQty'])) {
                 if ($upQty == 0) {
                     unset($_SESSION['cart']);
                 } else {
-                    $data = array([
+                    $data[] = [
                         'name' => $cart_item['name'],
                         'id' => $id,
                         'sale_price' => $cart_item['sale_price'],
                         'image' => $cart_item['image'],
                         'qty' => $upQty
-                    ]);
+                    ];
                     $_SESSION['cart'] = $data;
                 }
             }
         }
     }
     header("location: ?pages=cart&action=list");
+}
+//xoa 1 san pham ra khoi gio hang
+if (isset($_POST['deleteCart'])) {
+    session_start();
+    $id = $_GET['deleteCart'];
+    if (isset($_SESSION['cart'])) {
+        foreach ($_SESSION['cart'] as $cart_item) {
+            if ($cart_item['id'] != $id) {
+                $data[] = [
+                    'name' => $cart_item['name'],
+                    'id' => $cart_item['id'],
+                    'sale_price' => $cart_item['sale_price'],
+                    'image' => $cart_item['image'],
+                    'qty' => $cart_item['qty']
+                ];
+            }
+            $_SESSION['cart'] = $data;
+            header('Location: ?pages=cart&action=list');
+        }
+    }
 }
