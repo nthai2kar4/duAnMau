@@ -52,6 +52,36 @@ function getAllCategory()
         return $query->fetch_all(MYSQLI_ASSOC);
     }
 }
+//lấy 1 danh mục
+function getOneCategory($id){
+    global $conn;
+    $query = "SELECT * FROM product_category where id='$id'";
+    $sql = mysqli_query($conn, $query);
+    if ($sql) {
+        return $sql->fetch_all(MYSQLI_ASSOC);
+    }
+}
+//thêm danh mục
+function createCategory($name){
+    global $conn;
+    $query = "INSERT INTO product_category (name) values('$name')";
+    mysqli_query($conn, $query);
+    header("Location: index.php?pages=category&action=list");
+}
+//sửa danh mục
+function editCategory($id,$name){
+    global $conn;
+    $query = "UPDATE product_category SET name = '$name' WHERE id = '$id'";
+    mysqli_query($conn, $query);
+    header("Location: index.php?pages=category&action=list");
+}
+//xóa danh mục
+function deleteCategory($id){
+    global $conn;
+    $query = "DELETE FROM product_category WHERE id = '$id'";
+    mysqli_query($conn, $query);
+    header("Location: index.php?pages=category&action=list");
+}
 //lấy tất cả sản phẩm
 function getAllProduct()
 {

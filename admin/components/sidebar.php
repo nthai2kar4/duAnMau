@@ -19,6 +19,12 @@
                 </a>    
             </li>
             <li class="nav-item">
+                <a class="nav-link collapsed" href="./index.php?pages=category&action=list">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Quản lí danh mục SP</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="./index.php?pages=user&action=list">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Quản lí khách hàng</span>

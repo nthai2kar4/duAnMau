@@ -5,6 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+    .truncate-text {
+        white-space: nowrap;
+        /* Ngăn văn bản xuống dòng */
+        overflow: hidden;
+        /* Ẩn các nội dung dư thừa */
+        text-overflow: ellipsis;
+        /* Hiển thị dấu ba chấm (...) khi bị cắt */
+        max-width: 150px;
+    }
+</style>
 </head>
 
 <body>
@@ -37,8 +48,8 @@
                                 <?php foreach(getAllProduct() as $item):?>
                                 <tr class="text-center">
                                     <td><?= $item['id']?></td>
-                                    <td><?= $item['name']?></td>
-                                    <td><?= $item['slug']?></td>
+                                    <td class="truncate-text"><?= $item['name']?></td>
+                                    <td class="truncate-text"><?= $item['slug']?></td>
                                     <td><?= $item['category']?></td>
                                     <td><img src="<?= $item['image']?>" alt="" width="40px" height="50px"></td>
                                     <td><?= number_format($item['price'])?></td>

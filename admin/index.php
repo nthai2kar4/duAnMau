@@ -21,7 +21,7 @@ include "code/function.php";
     <div id="wrapper">
         <?php
         include 'components/sidebar.php';
-        
+
         ?>
         <?php
         if (isset($_GET['pages'])) {
@@ -58,6 +58,7 @@ include "code/function.php";
                             break;
                     }
                     break;
+
                 case 'order':
                     switch ($_GET['action']) {
                         case 'list':
@@ -68,6 +69,23 @@ include "code/function.php";
                             break;
                         default:
                             include 'order/list.php';
+                            break;
+                    }
+                    break;
+
+                case 'category':
+                    switch ($_GET['action']) {
+                        case 'list':
+                            include 'category/list.php';
+                            break;
+                        case 'add':
+                            include 'category/add.php';
+                            break;
+                        case 'edit':
+                            include 'category/edit.php';
+                            break;
+                        default:
+                            include 'category/list.php';
                             break;
                     }
                     break;

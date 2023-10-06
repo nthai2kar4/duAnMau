@@ -25,11 +25,11 @@
                                 <tr class="text-center">
                                     <td><?= $i ?></td>
                                     <td><?= $data['cart_code'] ?></td>
-                                    <td><?= $data['user_name'] ?></td>
+                                    <td style="width:130px;"><?= $data['user_name'] ?></td>
                                     <td><?= $data['email'] ?></td>
                                     <td><?= $data['user_phone'] ?></td>
                                     <td><?= $data['user_address'] ?></td>
-                                    <td>
+                                    <td style="width:120px;">
                                         <div class="d-flex justify-content-center">
                                             <a href="./index.php?pages=order&action=detail&id=<?= $data['cart_code'] ?>" class="btn btn-primary" style="margin-right: 10px;">Chi tiết</a>
                                         </div>

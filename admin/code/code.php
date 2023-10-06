@@ -80,6 +80,22 @@ if (isset($_POST['deleteProduct'])) {
     $id = $_POST['idProduct'];
     deleteProduct($id);
 }
+//them danh muc
+if (isset($_POST['addCate'])){
+    $name = $_POST['name'];
+    createCategory($name);
+}
+//sua danh muc
+if(isset($_POST['editCate'])){
+    $id = $_GET['id'];
+    $name = $_POST['name'];
+    editCategory($id, $name);
+}
+//xoa danh muc
+if(isset($_POST['deleteCate'])){
+    $id = $_POST['idCate'];
+    deleteCategory($id);
+}
 //them user
 if (isset($_POST['addUser'])) {
     $name = $_POST['name'];
@@ -164,6 +180,7 @@ if (isset($_POST['logout'])) {
     session_start();
     unset($_SESSION['login_user']);
     unset($_SESSION['cart']);
+    header("Location: ?index.php");
 }
 //them gio hang
 if (isset($_POST['addCart'])) {
@@ -546,6 +563,7 @@ if (isset($_POST['payCart'])) {
     </div>
 </div>";
     thanhToanVaGuiEmail($email, $tieuDe, $noiDung);
+    $_SESSION['cart_code'] = $cart_code; 
     unset($_SESSION['cart']);
     header('Location: ?pages=thank');
 }
