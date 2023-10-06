@@ -3,6 +3,7 @@
 
 <head>
     <?php
+    include 'mail/Mail.php';
     include 'components/head.php';
     require_once '../admin/code/function.php';
     if (session_status() == PHP_SESSION_NONE) {
@@ -52,6 +53,13 @@
                         include 'page/cart.php';
                         break;
                 }
+                break;
+            case 'checkout':
+                include 'page/checkout.php';
+                break;
+            case 'thank':
+                include 'page/thank.php';
+                break;
         }
     } else {
         include 'components/main.php';

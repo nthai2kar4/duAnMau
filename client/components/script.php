@@ -14,12 +14,25 @@
 	<script src="client/asset/js/main.js"></script>
 	<script src="client/asset/js/jquery.magnific-popup.min.js"></script>
 	<!--gmaps Js-->
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<?php
-		if (isset($_SESSION['success']) && $_SESSION['success'] != '') {
+	if (isset($_SESSION['success']) && $_SESSION['success'] != '') {
 	?>
-	<script>swal("<?= $_SESSION['success']?>","", "success");</script>
+		<script>
+			Swal.fire({
+				icon: 'success',
+				title: '<?= $_SESSION['success'] ?>',
+				showConfirmButton: false,
+				  timer:2000,
+			});
+		</script>
+		<style>
+			.swal2-select {
+				display: none !important;
+			}
+		</style>
 	<?php
-	unset($_SESSION['success']);
+		unset($_SESSION['success']);
 	}
 	?>

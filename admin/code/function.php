@@ -158,7 +158,7 @@ function getUser($email, $password)
 function login()
 {
     global $conn;
-    $query = "SELECT name FROM user where email = '$_SESSION[login_user]'";
+    $query = "SELECT * FROM user where email = '$_SESSION[login_user]'";
     $sql = mysqli_query($conn, $query);
     if ($sql) {
         return $sql->fetch_all(MYSQLI_ASSOC);
@@ -171,12 +171,34 @@ function register($name, $email, $hash)
     $query = "INSERT INTO user (name, email, password) VALUES ('$name', '$email','$hash')";
     mysqli_query($conn, $query);
 }
-//Thêm giỏ hàng
-function addToCart($id)
+//Thêm giỏ hàng vào db
+function addToCart($id, $name, $address, $phone, $cart_code)
 {
     global $conn;
+    $query = "INSERT INTO orders (user_id, user_name, user_address, user_phone, cart_code, cart_status) VALUES ('$id', '$name', '$address', '$phone', '$cart_code', 1)";
+    mysqli_query($conn, $query);
 }
-
+function addToCartDetail($cart_code, $product_id, $qty){
+    global $conn;
+    $query = "INSERT INTO orders_detail (cart_code, product_id, qty) VALUES ('$cart_code', '$product_id','$qty')";
+    mysqli_query($conn, $query);
+}
+function getOrders(){
+    global $conn;
+    $query = "SELECT o.*, u.email as email FROM orders o, user u where o.user_id = u.id";
+    $sql = mysqli_query($conn, $query);
+    if ($sql) {
+        return $sql->fetch_all(MYSQLI_ASSOC);
+    }
+}
+function getOrdersDetail($id){
+    global $conn;
+    $query = "SELECT * FROM orders_detail o, product p  WHERE o.product_id = p.id and o.cart_code = $id order by o.id desc";
+    $sql = mysqli_query($conn, $query);
+    if ($sql) {
+        return $sql->fetch_all(MYSQLI_ASSOC);
+    }
+}
 // function setCookies()
 // {
 //     // lưu và set thời gian lưu thông tin trên thanh input

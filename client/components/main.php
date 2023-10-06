@@ -186,7 +186,7 @@
             <div class="row">
                 <!-- single product -->
                 <?php foreach (getAllProduct() as $data) : ?>
-				<form action="" method="post" enctype="multipart/form-data" class="col-lg-3 col-md-6">
+				<form action="" method="post" enctype="multipart/form-data" class="col-lg-3 col-md-6" id="myForm">
                 <div >
                     <div class="single-product">
                         <img class="img-fluid" src="/admin<?= substr($data['image'], 1) ?>" alt="">

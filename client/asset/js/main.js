@@ -92,7 +92,7 @@ $(document).ready(function(){
         autoplayTimeout: 5000,
         loop:true,
         nav:true,
-        navText:["<img src='asset/img/product/prev.png'>","<img src='asset/img/product/next.png'>"],
+        navText:["<img src='client/asset/img/product/prev.png'>","<img src='client/asset/img/product/next.png'>"],
         dots:false
     });
 

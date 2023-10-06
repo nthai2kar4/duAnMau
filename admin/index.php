@@ -63,8 +63,8 @@ include "code/function.php";
                         case 'list':
                             include 'order/list.php';
                             break;
-                        case 'update':
-                            include 'order/update.php';
+                        case 'detail':
+                            include 'order/detail.php';
                             break;
                         default:
                             include 'order/list.php';
