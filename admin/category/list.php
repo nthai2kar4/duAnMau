@@ -22,10 +22,8 @@
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <a href="./index.php?pages=category&action=edit&id=<?= $data['id'] ?>" class="btn btn-primary" style="margin-right: 10px;">Sửa</a>
-                                            <form action="" method="post">
-                                                <input type="hidden" value="<?= $data['id']?>" name="idCate">
-                                                <button class="btn btn-danger" name="deleteCate" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục?')" type="submit">Xóa</button>
-                                            </form>
+                                                <a class="btn btn-danger" href="?./index.php?pages=category&action=delete&cateid=<?= $data['id']?>" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục?')">Xóa</a>
+                                            
                                         </div>
                                     </td>
                                 </tr>

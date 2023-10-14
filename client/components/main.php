@@ -187,6 +187,7 @@
                 <!-- single product -->
                 <?php foreach (getAllProduct() as $data) : ?>
 				<form action="" method="post" enctype="multipart/form-data" class="col-lg-3 col-md-6" id="myForm">
+                    <a href="?pages=shop&action=detail&id=<?= $data['id']?>">
                 <div >
                     <div class="single-product">
                         <img class="img-fluid" src="/admin<?= substr($data['image'], 1) ?>" alt="">
@@ -214,6 +215,7 @@
                         </div>
                     </div>
                 </div>
+                </a>
 				</form>
                 <?php endforeach ?>
             </div>

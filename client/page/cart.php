@@ -3,9 +3,9 @@
     <div class="container">
         <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
             <div class="col-first">
-                <h1>Shopping Cart</h1>
+                <h1>Giỏ hàng</h1>
                 <nav class="d-flex align-items-center">
-                    <a href="?index.php">Home<span class="lnr lnr-arrow-right"></span></a>
+                    <a href="?index.php">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
                     <a href="">Cart</a>
                 </nav>
             </div>
@@ -22,11 +22,11 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Total</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">Sản phẩm</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Tổng</th>
+                            <th scope="col">Xóa</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +68,7 @@
                                     </td>
 
                                     <td>
-                                        <form action="?pages=cart&action=list&deleteCart=<?= $item['id'] ?>" method="post"><button onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi giỏ hàng?')" class="btn btn-danger" type="submit" name="deleteCart">Xoá</button></form>
+                                        <a href="?page=cart&action=delete&deleteCart=<?= $item['id'] ?>" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi giỏ hàng?')" class="btn btn-danger">Xoá</a>
                                     </td>
 
                                 </tr>
@@ -79,19 +79,6 @@
                                 <td>Hiện tại không có sản phẩm nào trong giỏ hàng</td>
                             </tr>
                         <?php } ?>
-                        <tr class="bottom_button">
-                            <td>
-                                <a class="gray_btn" href="#">Update Cart</a>
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td></td>
-                            <td></td>
-                        </tr>
                         <tr>
                             <td></td>
                             <td>
@@ -101,7 +88,7 @@
 
                             </td>
                             <td>
-                                <h5>Subtotal</h5>
+                                <h5>Tổng cộng:</h5>
                             </td>
                             <td>
                                 <h5><?= isset($total) ? number_format($total) : ''; ?></h5>
@@ -122,7 +109,7 @@
                             </td>
                             <td>
                                 <div class="checkout_btn_inner d-flex align-items-center">
-                                    <a class="primary-btn" href="?pages=checkout">Proceed to checkout</a>
+                                    <a class="primary-btn" href="?pages=checkout">Thanh Toán</a>
                                 </div>
                             </td>
                         </tr>

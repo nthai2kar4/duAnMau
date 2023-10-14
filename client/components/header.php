@@ -12,9 +12,9 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 					<ul class="nav navbar-nav menu_nav ml-auto">
-						<li class="nav-item"><a class="nav-link" href="?index.php">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="?index.php">Trang chủ</a></li>
 						<li class="nav-item submenu dropdown">
-							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Shop</a>
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cửa hàng</a>
 							<ul class="dropdown-menu">
 								<li class="nav-item"><a class="nav-link" href="?pages=shop&action=category">Shop Category</a></li>
 								<li class="nav-item"><a class="nav-link" href="client/single-product.html">Product Details</a></li>
@@ -24,21 +24,21 @@
 							</ul>
 						</li>
 						<li class="nav-item submenu dropdown">
-							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tin tức</a>
 							<ul class="dropdown-menu">
 								<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
 								<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
 							</ul>
 						</li>
 						<li class="nav-item submenu dropdown">
-							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>
+							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Trang</a>
 							<ul class="dropdown-menu">
 								<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
 								<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
 								<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
 							</ul>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						<li class="nav-item"><a class="nav-link" href="contact.html">Liên hệ</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="nav-item"><a href="?pages=cart&action=list" class="cart"><span class="ti-bag"></span></a></li>

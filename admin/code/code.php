@@ -92,8 +92,8 @@ if(isset($_POST['editCate'])){
     editCategory($id, $name);
 }
 //xoa danh muc
-if(isset($_POST['deleteCate'])){
-    $id = $_POST['idCate'];
+if(isset($_GET['cateid'])){
+    $id = $_GET['cateid'];
     deleteCategory($id);
 }
 //them user
@@ -280,7 +280,7 @@ if (isset($_GET['downQty'])) {
     header("location: ?pages=cart&action=list");
 }
 //xoa 1 san pham ra khoi gio hang
-if (isset($_POST['deleteCart'])) {
+if (isset($_GET['deleteCart'])) {
     session_start();
     $id = $_GET['deleteCart'];
     if (isset($_SESSION['cart'])) {
@@ -400,12 +400,15 @@ if (isset($_POST['payCart'])) {
                                                                                     <div id='m_-7628188207803792935body_content_inner'
                                                                                         style='color:#636363;font-family:&quot;Helvetica Neue&quot;,Helvetica,Roboto,Arial,sans-serif;font-size:14px;line-height:150%;text-align:left'
                                                                                         align='left'>
-                    
+                                                                                        <p
+                                                                                            style='margin:0 0 16px'>
+                                                                                           Xin chào $name
+                                                                                        </p>
                                                                                         <p
                                                                                             style='margin:0 0 16px'>
                                                                                             Bạn vừa nhận
                                                                                             được đơn hàng từ
-                                                                                            $name Đơn
+                                                                                            Karma, Đơn
                                                                                             hàng như sau:
                                                                                         </p>
                     
@@ -484,6 +487,18 @@ if (isset($_POST['payCart'])) {
                                                                                                         <td style='color:#636363;border:1px solid #e5e5e5;vertical-align:middle;padding:12px;text-align:left'
                                                                                                             align='left'>
                                                                                                             <span>" . number_format($_SESSION['total']) . "<span>VND</span></span>
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <th scope='row'
+                                                                                                            colspan='2'
+                                                                                                            style='color:#636363;border:1px solid #e5e5e5;vertical-align:middle;padding:12px;text-align:left'
+                                                                                                            align='left'>
+                                                                                                            Chú thích:
+                                                                                                        </th>
+                                                                                                        <td style='color:#636363;border:1px solid #e5e5e5;vertical-align:middle;padding:12px;text-align:left'
+                                                                                                            align='left'>
+                                                                                                            <span>$message</span>
                                                                                                         </td>
                                                                                                     </tr>
                                                                                                 </tfoot>

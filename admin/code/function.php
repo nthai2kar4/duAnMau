@@ -102,6 +102,15 @@ function getOneProduct($id)
         return $sql->fetch_all(MYSQLI_ASSOC);
     }
 }
+// lấy 1 sản phẩm theo danh mục
+function getOneProductByCategory($id){
+    global $conn;
+    $query = "SELECT * FROM product_category c WHERE '$id' = c.id";
+    $sql = mysqli_query($conn, $query);
+    if ($sql) {
+        return $sql->fetch_all(MYSQLI_ASSOC);
+    }
+}
 //thêm sản phẩm
 function createProduct($name, $slug, $category, $image, $content, $price, $sale_price)
 {
