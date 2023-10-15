@@ -582,3 +582,46 @@ if (isset($_POST['payCart'])) {
     unset($_SESSION['cart']);
     header('Location: ?pages=thank');
 }
+//them so dien thoai cua nguoi dung 
+if(isset($_POST['phone_user'])){
+    $phone = $_POST['phone'];
+    $id = $_GET['user'];
+    editPhone($phone, $id);
+}
+//them address
+if(isset($_POST['address_user'])){
+    $address = $_POST['address'];
+    $id = $_GET['user'];
+    editAddress($address, $id);
+}
+//them avatar
+if(isset($_POST['save_user'])){
+    $id = $_POST['id_user'];
+    $avatar = $_FILES['avatar']['name'];
+    $upload = $_FILES['avatar'];
+    if ($upload['error'] === UPLOAD_ERR_OK) {
+        $tempName = $upload['tmp_name'];
+
+        // Xác định tên file mới
+        $originalName = basename($upload['name']);
+        $extension = pathinfo($originalName, PATHINFO_EXTENSION);
+        $newFileName = uniqid() . '_' . $originalName; // Thêm một giá trị duy nhất vào tên file
+        // Thư mục lưu trữ ảnh
+        $uploadDir = '../admin/upload/user/'; 
+
+        // Di chuyển file ảnh đến thư mục lưu trữ
+        if (move_uploaded_file($tempName, $uploadDir . $newFileName)) {
+            // Trả về đường dẫn ảnh mới
+            $avatar = $uploadDir . $newFileName;
+        } else {
+            echo "<div class='alert alert-danger style='width: 400px;
+                    margin-left: 250px;'>Có lỗi xảy ra khi lưu trữ file ảnh.</div>";
+        }
+    } else {
+        $avatar = $_POST['avatar2'];
+    }
+    if(!empty($avatar)) {
+        editAvatar($avatar, $id);
+    }
+}
+

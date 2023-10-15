@@ -244,3 +244,22 @@ function getOrdersDetail($id){
 //     setcookie('email', $_POST['email'], time() + 15, '/');
 //     setcookie('password', $_POST['password'], time() + 15, '/');
 // }
+//sửa số đt user
+function editPhone($phone, $id){
+    global $conn;
+    $query = "UPDATE user SET phone = '$phone' WHERE id = '$id'";
+    mysqli_query($conn, $query);
+    header('Location: ?pages=profile&action=profile');
+}
+function editAddress($address, $id){
+    global $conn;
+    $query = "UPDATE user SET address = '$address' WHERE id = '$id'";
+    mysqli_query($conn, $query);
+    header('Location: ?pages=profile&action=profile');
+}
+function editAvatar($avatar, $id){
+    global $conn;
+    $query = "UPDATE user SET avatar = '$avatar' WHERE id = '$id'";
+    mysqli_query($conn, $query);
+    header('Location: ?pages=profile&action=profile');
+}

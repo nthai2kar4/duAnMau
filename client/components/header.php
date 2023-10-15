@@ -45,11 +45,20 @@
 						<li class="nav-item">
 							<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
 						</li>
-						<li class="nav-item"><span><form action="" method="post"><?php if (isset($_SESSION['login_user'])) {
-													echo $data[0]["name"]." <button class='search' style='color:red; margin-left:5px;' name='logout' type='submit'>Đăng xuất</button>";
-												} else {
-													echo '<a href="?pages=login" class="search"><span class="lnr lnr-user" id="search"></span></a>';
-												} ?></form></span></li>
+						<li class="nav-item"><span>
+								<form action="" method="post">
+									<?php if (isset($_SESSION['login_user'])) {
+										echo "<a href='?pages=profile&action=profile' class='hehe'>";
+										echo $data[0]["name"];
+										echo "</a>";
+										echo "<button class='search' style='color:red; margin-left:6px;' name='logout' type='submit'>Đăng xuất</button>";
+									?>
+									<?php
+									} else {
+										echo '<a href="?pages=login" class="search"><span class="lnr lnr-user" id="search"></span></a>';
+									} ?>
+								</form>
+							</span></li>
 					</ul>
 				</div>
 			</div>
